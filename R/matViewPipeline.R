@@ -29,9 +29,13 @@ get_view <- function(URL,dbSource,conn) {
   out <- try({ tbl(dbSource,name_view)},silent=TRUE)
   if(class(out)[1]=="try-error") {
     out <- try({ tbl(dbSource,tolower(name_view))},silent=TRUE)
+    if(class(out)[1]=="try-error") {
+      message(paste0("May have error on view ", name_view))
+      return(out) 
+    }
   }
   else {
-    message(paste0("Error on view ", name_view))
+    
   }
   return(out)
 }
@@ -67,10 +71,10 @@ get_view <- function(URL,dbSource,conn) {
 #'
 
 
-get_views <- function(URLlist="london2016_datathon_cirr/mat_view_urls",con,dplyrDB,special=FALSE,specialURL="") {
+get_views <- function(URLlist="london2016_datathon_cirr/mat_view_urls",con,dplyrDB,use_special=FALSE,specialURL="") {
   URLs <- readLines(URLlist)
   out <- sapply(URLs,function(x) { get_view(x,dplyrDB,con)})
-  if(special) {
+  if(use_special) {
     xml <- xmlParse(specialURL)
     #xml_by_case <- xml_find_all(xml,"//case")
     xml_by_case <- getNodeSet(xml,"//case")
