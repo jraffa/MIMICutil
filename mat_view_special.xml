@@ -1,0 +1,25 @@
+<special>
+  <case>
+    <id>1</id>
+    <url>https://raw.githubusercontent.com/MIT-LCP/mimic-code/master/concepts/diagnosis/ccs_diagnosis_table.sql</url>
+    <regex_remove type="line">copy</regex_remove>
+    <extra_files>
+      <extra_file>
+        <eid>1</eid>
+        <name>ccs_multi_level.csv.gz</name>
+        <target>ccs_multi_level_dx</target>
+        <url compression="gz">https://github.com/MIT-LCP/mimic-code/blob/master/concepts/diagnosis/ccs_multi_level.csv.gz?raw=true</url>
+        <file_type>csv</file_type>
+        <method>pushcsv</method>
+      </extra_file>
+      <extra_file>
+        <eid>2</eid>
+        <name>ccs_single_level.csv.gz</name>
+        <target>ccs_single_level_dx</target>
+        <url compression="gz">https://github.com/MIT-LCP/mimic-code/blob/master/concepts/diagnosis/ccs_single_level.csv.gz?raw=true</url>
+        <file_type>csv</file_type>
+        <method>pushcsv</method>
+      </extra_file>
+    </extra_files>
+  </case>
+</special>
