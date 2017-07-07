@@ -1,0 +1,12 @@
+Package: MIMICutil
+Type: Package
+Title: Medical Information Mart for Intensive Care (MIMIC-III) R Utilities for Setup, Data Processing and Analysis
+Version: 0.1.0
+Author: Jesse D. Raffa 
+Maintainer: Jesse D. Raffa <jraffa@mit.edu>
+Description: MIMIC-III is a freely accessible critical care database maintained at the Laboratory for Computational Physiology at MIT. This package provides tools which help with setup and other issues which should assist in improving the usability of MIMIC-III with R. To get access to MIMIC-III, please visit https://mimic.physionet.org/ .   No data is provided as part of this package, as it requires a separate approval process.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: RPostgreSQL, DBI, XML, dplyr, stringr
+RoxygenNote: 6.0.1
