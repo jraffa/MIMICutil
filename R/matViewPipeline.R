@@ -79,7 +79,9 @@ get_views <- function(URLlist="london2016_datathon_cirr/mat_view_urls",con,dplyr
     #xml_by_case <- xml_find_all(xml,"//case")
     xml_by_case <- getNodeSet(xml,"//case")
     out2 <- sapply(1:length(xml_by_case), function(x) { get_special_case(xml_by_case[[x]],dplyrDB,con)})
-
+    return(c(out,out2))
+  } else {
+    return(out)
   }
 
 }
