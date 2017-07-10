@@ -25,6 +25,9 @@
 get_view <- function(URL,dbSource,conn) {
   x_code <- paste0(readLines(URL),collapse= "\n")
   name_view <-  str_split(str_split((x_code), fixed("CREATE MATERIALIZED VIEW ",ignore_case = TRUE))[[1]][2], "\\W")[[1]][1]
+  if(is.na(name_view) | is.null(name_view)) {
+    name_view <- str_split(str_split((x_code), fixed("DROP MATERIALIZED VIEW IF EXISTS ",ignore_case = TRUE))[[1]][2], "\\W")[[1]][1]
+  }
   dbSendStatement(conn,x_code)
   out <- try({ tbl(dbSource,name_view)},silent=TRUE)
   if(class(out)[1]=="try-error") {
